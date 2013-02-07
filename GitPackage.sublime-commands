@@ -1,0 +1,13 @@
+[
+	{
+		"caption": "Git Package: Install/Update",
+		"command": "git_package"
+	},
+	{
+        "caption": "Git Package: Manage",
+        "command": "open_file", "args":
+        {
+            "file": "${packages}/User/GitPackage.sublime-settings"
+        }
+    }
+]
