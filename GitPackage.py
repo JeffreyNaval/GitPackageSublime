@@ -47,9 +47,17 @@ class GitPackageCommand(sublime_plugin.WindowCommand):
 				sublime.save_settings('GitPackage.sublime-settings')
 				path = self.s.get('git_path')
 
-			self.window.run_command(
-				'exec',
-				{ 'cmd':['git','clone',git_url,folder_name],
-				  'working_dir':sublime.packages_path(),
-				  'path': path
-				})
+			if os.path.exists(working_dir):
+				self.window.run_command(
+					'exec',
+					{ 'cmd':['git','pull',git_url,'master'],
+					  'working_dir':working_dir,
+					  'path': path
+					})
+			else:
+				self.window.run_command(
+					'exec',
+					{ 'cmd':['git','clone',git_url,folder_name],
+					  'working_dir':sublime.packages_path(),
+					  'path': path
+					})
